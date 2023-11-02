@@ -5,8 +5,8 @@
     Programming Assignment #1: Producer Consumer Problem
 */
 
-#include <pthread.h>
-#include <semaphore.h>
+#include <pthread.h>   //Refer to: https://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html
+#include <semaphore.h> //Refer to: https://pubs.opengroup.org/onlinepubs/7908799/xsh/semaphore.h.html
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -15,19 +15,30 @@
 #define NumProducer 1 // Produce More??
 #define NumConsumer 1 // Eat more??
 
-// Producer generates items and places into table
-// Consumer eats items
+// Producer generates items then places into table
+// Consumer takes item from table then eats items
 // Table only holds 2 items at once
 // No Items? -> Consumer Waits
+// No Space? -> Producer Waits
 // Use Semaphores to sync producer and consumer
 // Consider Mutual Exclusion
 // Use Threads
 // Shared Memory for the table
 // Expected run command:
 /*
-
 gcc producer.c -pthread -lrt -o producer
 gcc consumer.c -pthread -lrt -o consumer
 ./producer & ./consumer &
-
 */
+
+sem_t empty;           // Semaphore unlocked
+sem_t full;            // Semaphore locked
+int buffer[TableSize]; // Make a buffer with the size defined
+
+pthread_mutex_t mutex; // Make a mutex lock
+
+int main()
+{
+
+    return 0;
+}
