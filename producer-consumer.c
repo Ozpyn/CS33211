@@ -37,8 +37,24 @@ int buffer[TableSize]; // Make a buffer with the size defined
 
 pthread_mutex_t mutex; // Make a mutex lock
 
+void producer()
+{
+    // Make Item
+    // Insert Item when space & able to make more
+}
+void consumer()
+{
+    // Remove item if item & not eating
+    // Eat item
+}
 int main()
 {
+    // Specify producer and consumer threads
+    // Initialize mutex lock
+    // Initialize semaphores to indicate full or empty
+    // Produce and Destroy Logic
+    // Unassign mutex lock (free memory)
+    // Unassign semaphores (free memory)
 
     return 0;
 }
