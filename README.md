@@ -4,6 +4,7 @@ Run the program:
 ```
 gcc producer-consumer.c -pthread -lrt -o procon
 ./procon
+rm procon
 ```
 
 There are defined variables the user can modify:
@@ -15,3 +16,9 @@ There are defined variables the user can modify:
     - How many producer characters there will be.
 - NumConsumer
     - How many consumer characters there will be.
+
+### Libraries Being Used:
+- <pthread.h>
+- <semaphore.h>
+- <stdlib.h>
+- <stdio.h>
