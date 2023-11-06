@@ -19,6 +19,20 @@ There are defined variables the user can modify:
 
 ### Libraries Being Used:
 - <pthread.h>
+    - Utilize CPU Threads
 - <semaphore.h>
+    - Utilize Semaphores
 - <stdlib.h>
+    - Standard Library
 - <stdio.h>
+    - Standard Input Output
+
+### Implementation
+
+4 Variables can be assigned to limit the run-time of the program.
+
+Usage of semaphores and a mutex lock ensure mutual exclusivity as it portains to shared resource access.
+
+Consumer logic is inversely proportional to that of the Producer.
+
+Threads and Semaphores are cleared at the end to clear up memory.
