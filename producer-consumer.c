@@ -33,6 +33,13 @@ gcc consumer.c -pthread -lrt -o consumer
 
 sem_t empty;           // Semaphore unlocked
 sem_t full;            // Semaphore locked
+int in = 0;            // Table ID of input
+int out = 0;           // Table ID of output
+                       /*
+                       In and Out will be used by the producer and consumer to
+                       communicate what part of the buffer has been emptied
+                       and what will be emptied
+                       */
 int buffer[TableSize]; // Make a buffer with the size defined
 
 pthread_mutex_t mutex; // Make a mutex lock
@@ -55,6 +62,28 @@ int main()
     // Produce and Destroy Logic
     // Unassign mutex lock (free memory)
     // Unassign semaphores (free memory)
-
+    pthread_mutex_init(&mutex, NULL);
+    sem_init(&empty, 0, TableSize);
+    sem_init(&full, 0, 0);
+    int a[5] = {1, 2, 3, 4, 5}; // Just used for numbering the producer and consumer
+    for (int i = 0; i < NumProducer; i++)
+    {
+        // Create the desired number of Producer threads
+    }
+    for (int i = 0; i < NumConsumer; i++)
+    {
+        // Create the desired number of Consumer Threads
+    }
+    for (int i = 0; i < NumProducer; i++)
+    {
+        // Terminate the desired number of producer threads
+    }
+    for (int i = 0; i < NumConsumer; i++)
+    {
+        // Terminate the desired number of consumer threads
+    }
+    pthread_mutex_destroy(&mutex);
+    sem_destroy(&empty);
+    sem_destroy(&full);
     return 0;
 }
