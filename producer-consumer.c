@@ -52,6 +52,14 @@ void *producer(void *pno)
     int item;                          // Plain placeholder item
     for (int i = 0; i < MaxItems; i++) // Loop until created Max Number of items
     {
+        item = rand();                                                                // Produce an random item
+        sem_wait(&empty);                                                             // Wait until semaphore is empty
+        pthread_mutex_lock(&mutex);                                                   // Lock Mutex lock
+        buffer[in] = item;                                                            // Place item in buffer
+        printf("Producer %d: Insert Item %d at %d\n", *((int *)pno), buffer[in], in); // Exclaim item in buffer
+        in = (in + 1) % TableSize;                                                    // Set next input
+        pthread_mutex_unlock(&mutex);                                                 // Unlock Mutex lock
+        sem_post(&full);                                                              // Change semaphore to indicate full
     }
 }
 void *consumer(void *cno)
@@ -60,6 +68,13 @@ void *consumer(void *cno)
     // Eat item
     for (int i = 0; i < MaxItems; i++)
     {
+        sem_wait(&full);                                                        // Wait until semaphore is full
+        pthread_mutex_lock(&mutex);                                             // Lock Mutex Lock
+        int item = buffer[out];                                                 // Take Item out of the buffer
+        printf("Consumer %d: Ate Item %d from %d\n", *((int *)cno), item, out); // Print eat item string
+        out = (out + 1) % TableSize;                                            // Set out to next out
+        pthread_mutex_unlock(&mutex);                                           // Unlock Mutex
+        sem_post(&empty);                                                       // Change semaphore to empty
     }
 }
 int main()
