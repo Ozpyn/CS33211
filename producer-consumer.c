@@ -44,15 +44,23 @@ int buffer[TableSize]; // Make a buffer with the size defined
 
 pthread_mutex_t mutex; // Make a mutex lock
 
-void producer()
+void *producer(void *pno)
 {
     // Make Item
     // Insert Item when space & able to make more
+
+    int item;                          // Plain placeholder item
+    for (int i = 0; i < MaxItems; i++) // Loop until created Max Number of items
+    {
+    }
 }
-void consumer()
+void *consumer(void *cno)
 {
     // Remove item if item & not eating
     // Eat item
+    for (int i = 0; i < MaxItems; i++)
+    {
+    }
 }
 int main()
 {
@@ -62,6 +70,7 @@ int main()
     // Produce and Destroy Logic
     // Unassign mutex lock (free memory)
     // Unassign semaphores (free memory)
+    pthread_t pro[NumProducer], con[NumConsumer];
     pthread_mutex_init(&mutex, NULL);
     sem_init(&empty, 0, TableSize);
     sem_init(&full, 0, 0);
@@ -69,18 +78,22 @@ int main()
     for (int i = 0; i < NumProducer; i++)
     {
         // Create the desired number of Producer threads
+        pthread_create(&pro[i], NULL, (void *)producer, (void *)&a[i]);
     }
     for (int i = 0; i < NumConsumer; i++)
     {
         // Create the desired number of Consumer Threads
+        pthread_create(&con[i], NULL, (void *)consumer, (void *)&a[i]);
     }
     for (int i = 0; i < NumProducer; i++)
     {
         // Terminate the desired number of producer threads
+        pthread_join(pro[i], NULL);
     }
     for (int i = 0; i < NumConsumer; i++)
     {
         // Terminate the desired number of consumer threads
+        pthread_join(con[i], NULL);
     }
     pthread_mutex_destroy(&mutex);
     sem_destroy(&empty);
