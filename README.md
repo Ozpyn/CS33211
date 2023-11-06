@@ -36,3 +36,6 @@ Usage of semaphores and a mutex lock ensure mutual exclusivity as it portains to
 Consumer logic is inversely proportional to that of the Producer.
 
 Threads and Semaphores are cleared at the end to clear up memory.
+
+### Example Output
+![Output](output.png)
