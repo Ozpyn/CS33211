@@ -55,5 +55,12 @@ int main()
             availFile >> avail[j];
     }
 
+    // Check if sequence is safe or not
+
+    // Is not safe
+    cout << "The given sequence is not safe";
+
+    // Is Safe
+    cout << "Following is the Safe Sequence" << endl;
     return 0;
 }
