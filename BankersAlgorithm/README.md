@@ -12,7 +12,7 @@ The banker’s algorithm is a resource allocation and deadlock avoidance algorit
 
 
 ### Implementation
-
+Read in tables from text documents, one for each table.
 
 ### Example Output
 ![Output](output.png)
