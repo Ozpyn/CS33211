@@ -2,7 +2,9 @@
 
 Run the program:
 ```
-
+g++ bankers-algorithm.cpp
+./a.out
+rm a.out
 ```
 
 ### What is Banker's Algorithm?
