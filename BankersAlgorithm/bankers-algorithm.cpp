@@ -10,9 +10,8 @@ using namespace std;
 
 int main()
 {
-    int n, m, i, j, k;
-    n = 5; // Number of processes
-    m = 3; // Number of resources
+    int n = 5; // Number of processes
+    int m = 3; // Number of resources
 
     ifstream allocFile("alloc.txt");
     int alloc[n][m];
@@ -25,7 +24,7 @@ int main()
     {
         {
             for (int j = 0; j < m; j++)
-                allocFile >> alloc[i][j];
+                allocFile >> alloc[i][j]; // Import alloc.txt
         }
     }
 
@@ -40,7 +39,7 @@ int main()
     {
         {
             for (int j = 0; j < m; j++)
-                maxFile >> max[i][j];
+                maxFile >> max[i][j]; // import max.txt
         }
     }
 
@@ -52,15 +51,24 @@ int main()
     }
     {
         for (int j = 0; j < m; j++)
-            availFile >> avail[j];
+            availFile >> avail[j]; // Import avail.txt
     }
 
-    // Check if sequence is safe or not
+    int need[n][m];
+    for (int a = 0; a < n; a++)
+    {
+        for (int b = 0; b < m; b++)
+        {
+            need[a][b] = max[a][b] - alloc[a][b]; // Make need array to determine needed values
+        };
+    };
 
+    // Check if sequence is safe or not
     // Is not safe
     cout << "The given sequence is not safe";
 
     // Is Safe
     cout << "Following is the Safe Sequence" << endl;
+
     return 0;
 }
