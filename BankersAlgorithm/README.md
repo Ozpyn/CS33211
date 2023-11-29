@@ -26,5 +26,15 @@ The program will only read the files if they follow the parameters:
 - Numbers are separated by spaces
 - New line means new row
 
+Create a new array of what will be needed by the algorithm (need = max - alloc)
+
+Boolean array of size (rows) to save whether or not each operation is safe.
+
+Integer array of size (rows) to save the sequence in which the process be run that is a safe sequence.
+
+Run algorithm with provided arrays.
+
+Vertify safety then output Results.
+
 ### Example Output
 ![Output](output.png)

@@ -69,7 +69,7 @@ int main()
     {
         for (int i = 0; i < row; i++)
         {
-            if (s[i] == 0)
+            if (s[i] == false)
             {
                 int safe = true;
                 for (int j = 0; j < col; j++)
@@ -98,7 +98,7 @@ int main()
 
     bool isSafe = true; // Bool because only 2 possible answers
 
-    // Check if sequence is safe or not
+    // Check results
     for (int i = 0; i < row; i++)
     {
         if (s[i] == false)
